@@ -1,0 +1,47 @@
+[project]
+name = "interview-coach"
+version = "0.1.0"
+description = "Multi-Agent Interview Coach with Ollama"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "httpx>=0.26.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=24.0.0",
+    "pylint>=3.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.pylint.main]
+py-version = "3.11"
+disable = [
+    "C0114",  # missing-module-docstring
+    "C0115",  # missing-class-docstring
+    "C0116",  # missing-function-docstring
+    "C0301",  # line-too-long (контролируется Black)
+    "R0903",  # too-few-public-methods
+    "R0913",  # too-many-arguments
+    "R0914",  # too-many-locals
+    "R0917",  # too-many-positional-arguments
+    "E1101",  # no-member (ложное срабатывание для Pydantic)
+    "R0801",  # duplicate-code (допустимый паттерн очистки JSON)
+]
+
+[tool.pylint.format]
+max-line-length = 88
