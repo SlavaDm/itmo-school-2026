@@ -30,6 +30,7 @@ async def start_interview(request: SessionStartRequest):
     """Создание новой сессии интервью."""
     session = coordinator.create_session(
         participant_name=request.participant_name,
+        fullname=request.fullname,
         position=request.position,
         grade=request.grade,
         experience=request.experience,
@@ -39,6 +40,7 @@ async def start_interview(request: SessionStartRequest):
     return {
         "session_id": session.session_id,
         "participant_name": session.participant_name,
+        "fullname": session.fullname,
         "position": session.position,
         "grade": session.grade,
         "script_number": session.script_number,

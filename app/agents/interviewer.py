@@ -41,7 +41,7 @@ class InterviewerAgent(BaseAgent):
         """Генерация приветствия для начала интервью."""
         prompt = f"""Начни интервью на позицию "{session.position}".
 
-КАНДИДАТ: {session.participant_name}
+КАНДИДАТ: {session.fullname}
 УРОВЕНЬ: {session.grade}
 ОПЫТ: {session.experience}
 СЛОЖНОСТЬ: {session.difficulty_level}/10
@@ -121,7 +121,7 @@ class InterviewerAgent(BaseAgent):
 
     async def generate_closing(self, session: InterviewSession) -> str:
         """Генерация завершающего сообщения."""
-        prompt = f"""Интервью с {session.participant_name} завершается.
+        prompt = f"""Интервью с {session.fullname} завершается.
 Вопросов: {len(session.turns)}
 
 Поблагодари и скажи про обратную связь.

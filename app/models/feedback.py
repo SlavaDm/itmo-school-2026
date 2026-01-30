@@ -45,6 +45,7 @@ class FinalFeedback(BaseModel):
 
     session_id: str
     participant_name: str
+    fullname: str
     position: str
     decision: Decision
     technical_review: TechnicalReview
@@ -73,7 +74,7 @@ class FinalFeedback(BaseModel):
         lines = [
             "# Результаты интервью",
             "",
-            f"**Кандидат:** {self.participant_name}  ",
+            f"**Кандидат:** {self.fullname}  ",
             f"**Позиция:** {self.position}  ",
             f"**Уровень:** {self.decision.grade}",
             "",

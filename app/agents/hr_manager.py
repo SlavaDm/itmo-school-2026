@@ -131,7 +131,7 @@ class HRManagerAgent(BaseAgent):
         prompt = f"""Проанализируй интервью и прими решение о найме.
 
 КАНДИДАТ:
-- Имя: {session.participant_name}
+- Имя: {session.fullname}
 - Позиция: {session.position}
 - Уровень: {session.grade}
 - Опыт: {session.experience}
@@ -257,6 +257,7 @@ class HRManagerAgent(BaseAgent):
             return FinalFeedback(
                 session_id=session.session_id,
                 participant_name=session.participant_name,
+                fullname=session.fullname,
                 position=session.position,
                 decision=Decision(
                     grade=data.get("actual_grade", session.grade),
@@ -297,6 +298,7 @@ class HRManagerAgent(BaseAgent):
             return FinalFeedback(
                 session_id=session.session_id,
                 participant_name=session.participant_name,
+                fullname=session.fullname,
                 position=session.position,
                 decision=Decision(
                     grade=session.grade,

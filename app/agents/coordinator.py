@@ -46,6 +46,7 @@ class InterviewCoordinator:
     def create_session(
         self,
         participant_name: str,
+        fullname: str,
         position: str,
         grade: str,
         experience: str,
@@ -62,6 +63,7 @@ class InterviewCoordinator:
 
         session = InterviewSession(
             participant_name=participant_name,
+            fullname=fullname,
             position=position,
             grade=grade,
             experience=experience,
